@@ -1,3 +1,4 @@
+import { CompanyContact } from '../components/CompanyContact';
 import { PageMeta } from '../components/PageMeta';
 import type { QuoteSelection, SiteContentMap } from '../types';
 
@@ -19,6 +20,9 @@ export function ContactPage({ content, onQuote }: ContactPageProps) {
       <h1 className="text-5xl font-black mt-3">{contact.title}</h1>
       <p className="mt-7 max-w-3xl text-lg leading-8">{contact.body}</p>
       <p className="mt-4 text-sm text-slate-500 italic">{contact.draftNotice}</p>
+      <div className="mt-8 max-w-lg">
+        <CompanyContact settings={content.settings} />
+      </div>
       <button type="button" className="btn btn-yellow mt-8" onClick={() => onQuote({ id: '', name: 'General Inquiry' })}>
         Request Quotation
       </button>

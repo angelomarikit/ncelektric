@@ -49,7 +49,7 @@ export default function App() {
         </Routes>
       </div>
       <Footer footer={content.footer} categories={categoryNames} onQuote={setSelected} />
-      <QuoteModal selected={selected} onClose={() => setSelected(null)} />
+      <QuoteModal selected={selected} settings={content.settings} onClose={() => setSelected(null)} />
     </div>
   );
 }

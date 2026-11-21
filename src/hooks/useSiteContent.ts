@@ -33,10 +33,11 @@ export function useSiteContent() {
           for (const row of data) {
             const id = row.id as ContentKey;
             if (id in next) {
-              (next as Record<string, unknown>)[id] = deepMerge(
-                next[id] as object,
-                row.payload as object,
-              );
+              (next as Record<string, unknown>)[id] = deepMerge(next[id] as object, row.payload as object);
+              if (id === 'settings') {
+                const s = (next as SiteContentMap).settings;
+                s.phoneLine2 = s.phoneLine2 ?? '';
+              }
             }
           }
           return next;

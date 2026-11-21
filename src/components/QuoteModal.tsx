@@ -1,16 +1,18 @@
 import { useEffect, useRef, type FormEvent, useState } from 'react';
 import { X } from 'lucide-react';
+import { CompanyContact } from './CompanyContact';
 import { supabase } from '../lib/supabase';
-import type { QuoteSelection } from '../types';
+import type { QuoteSelection, SiteSettings } from '../types';
 
 type QuoteModalProps = {
   selected: QuoteSelection;
+  settings: SiteSettings;
   onClose: () => void;
 };
 
 type SubmitState = 'idle' | 'busy' | 'saved' | 'saved_no_email' | 'error';
 
-export function QuoteModal({ selected, onClose }: QuoteModalProps) {
+export function QuoteModal({ selected, settings, onClose }: QuoteModalProps) {
   const [state, setState] = useState<SubmitState>('idle');
   const [message, setMessage] = useState('');
   const dialogRef = useRef<HTMLDivElement>(null);
@@ -119,6 +121,9 @@ export function QuoteModal({ selected, onClose }: QuoteModalProps) {
           <button type="button" onClick={onClose} aria-label="Close quotation form" className="p-2 hover:bg-slate-100 rounded">
             <X size={22} />
           </button>
+        </div>
+        <div className="mb-6">
+          <CompanyContact settings={settings} compact />
         </div>
         <form onSubmit={submit} className="grid md:grid-cols-2 gap-4">
           <input type="hidden" name="product_name" value={selected.name} readOnly />

@@ -82,6 +82,7 @@ export type SeoDefaults = {
 export type SiteSettings = {
   addressLine: string;
   phoneLine: string;
+  phoneLine2: string;
   emailLine: string;
 };
 

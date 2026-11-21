@@ -167,12 +167,12 @@ export function AdminContent({
         ) : null}
         {tab === 'settings' ? (
           <>
-            {(['addressLine', 'phoneLine', 'emailLine'] as const).map((field) => (
+            {(['addressLine', 'phoneLine', 'phoneLine2', 'emailLine'] as const).map((field) => (
               <label key={field} className="text-sm font-bold">
                 {field}
                 <input
                   className="field mt-1"
-                  value={draft.settings[field]}
+                  value={draft.settings[field] ?? ''}
                   onChange={(e) => setDraft((d) => ({ ...d, settings: { ...d.settings, [field]: e.target.value } }))}
                 />
               </label>
