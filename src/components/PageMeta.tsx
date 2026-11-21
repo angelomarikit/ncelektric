@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
+import { brand } from '../lib/assets';
 import { siteUrl } from '../lib/supabase';
 
 type PageMetaProps = {
   title: string;
   description: string;
   path?: string;
+  /** Page-specific share image; defaults to brand OG banner */
   image?: string;
   type?: 'website' | 'product';
   jsonLd?: Record<string, unknown>;
@@ -21,9 +23,14 @@ function setMeta(name: string, content: string, property = false) {
   el.setAttribute('content', content);
 }
 
+function absoluteAssetUrl(image: string): string {
+  if (image.startsWith('http')) return image;
+  return `${siteUrl.replace(/\/$/, '')}${image.startsWith('/') ? image : `/${image}`}`;
+}
+
 export function PageMeta({ title, description, path = '/', image, type = 'website', jsonLd }: PageMetaProps) {
   const canonical = `${siteUrl.replace(/\/$/, '')}${path.startsWith('/') ? path : `/${path}`}`;
-  const ogImage = image?.startsWith('http') ? image : image ? `${siteUrl.replace(/\/$/, '')}${image}` : undefined;
+  const shareImage = absoluteAssetUrl(image ?? brand.ogImage);
 
   useEffect(() => {
     document.title = title;
@@ -32,7 +39,12 @@ export function PageMeta({ title, description, path = '/', image, type = 'websit
     setMeta('og:description', description, true);
     setMeta('og:type', type, true);
     setMeta('og:url', canonical, true);
-    if (ogImage) setMeta('og:image', ogImage, true);
+    setMeta('og:image', shareImage, true);
+    setMeta('og:image:alt', 'NC Elektric Construction and Trading Co.', true);
+    setMeta('twitter:card', 'summary_large_image');
+    setMeta('twitter:title', title);
+    setMeta('twitter:description', description);
+    setMeta('twitter:image', shareImage);
 
     let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
     if (!link) {
@@ -52,7 +64,7 @@ export function PageMeta({ title, description, path = '/', image, type = 'websit
       script.textContent = JSON.stringify(jsonLd);
       document.head.appendChild(script);
     }
-  }, [title, description, canonical, ogImage, type, jsonLd]);
+  }, [title, description, canonical, shareImage, type, jsonLd]);
 
   return null;
 }

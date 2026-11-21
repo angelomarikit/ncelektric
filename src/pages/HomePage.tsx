@@ -3,7 +3,7 @@ import { Boxes, FileText, ShieldCheck, Truck } from 'lucide-react';
 import { PageMeta } from '../components/PageMeta';
 import { SectionHeading, SectionShell } from '../components/SectionShell';
 import { CategoryCard, ProductCard } from '../components/ProductCard';
-import { banners } from '../lib/assets';
+import { banners, brand } from '../lib/assets';
 import type { Category, Product, QuoteSelection, SiteContentMap } from '../types';
 
 const valueIcons = [ShieldCheck, Boxes, Truck, FileText];
@@ -25,7 +25,7 @@ export function HomePage({ products, categories, content, onQuote }: HomePagePro
         title={seo_defaults.defaultTitle}
         description={seo_defaults.defaultDescription}
         path="/"
-        image={hero.image}
+        image={brand.ogImage}
       />
       <section className="relative w-full min-h-[480px] md:min-h-[620px] lg:min-h-[680px] bg-[#0b294a] overflow-hidden">
         <img

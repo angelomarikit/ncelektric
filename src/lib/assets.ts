@@ -5,6 +5,7 @@ export const brand = {
   logoSvg: '/assets/brand/nc-elektric-logo.svg',
   logoLight: '/assets/brand/nc-elektric-logo-light.svg',
   favicon: '/assets/brand/favicon.svg',
+  ogImage: '/assets/brand/og-image.jpg',
 };
 
 export const banners = {
