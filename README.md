@@ -85,6 +85,15 @@ npm run preview
 
 **Vercel:** import repo, framework preset Vite, build command `npm run build`, output directory `dist`. Add the same `VITE_*` env vars.
 
+[`vercel.json`](vercel.json) rewrites all routes to `index.html` so client routes like `/admin` and `/products/:slug` work on refresh and direct links.
+
+In the Vercel project **Settings → Environment Variables**, set at minimum:
+- `VITE_SUPABASE_URL`
+- `VITE_SUPABASE_ANON_KEY`
+- `VITE_SITE_URL` = `https://ncelektric.vercel.app` (your production URL)
+
+Redeploy after adding env vars or `vercel.json`.
+
 Update `public/sitemap.xml` canonical URLs (or regenerate) when `VITE_SITE_URL` changes for production.
 
 ## Test results (local)
