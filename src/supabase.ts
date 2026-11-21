@@ -1,0 +1,1 @@
+export { supabase, backendReady, siteUrl } from './lib/supabase';

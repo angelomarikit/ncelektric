@@ -1,0 +1,23 @@
+{
+  "references": [
+    "design-references/01-approved-homepage.png",
+    "design-references/02-approved-collection.png",
+    "design-references/03-approved-product-detail.png"
+  ],
+  "hero": "public/assets/banners/home-hero.svg",
+  "catalog_banner": "public/assets/banners/catalog-hero.svg",
+  "supporting_background": "public/assets/banners/industrial-background.svg",
+  "logos": [
+    "public/assets/brand/nc-elektric-logo.svg",
+    "public/assets/brand/nc-elektric-logo-light.svg"
+  ],
+  "category_illustrations": [
+    "public/assets/categories/transformers.svg",
+    "public/assets/categories/transformer-cores.svg",
+    "public/assets/categories/steel-poles.svg",
+    "public/assets/categories/crating.svg",
+    "public/assets/categories/construction-materials.svg"
+  ],
+  "product_photographs": "Keep and reuse your original six product images from existing project; not present in recovered Library files",
+  "notes": "Illustrations are newly created visual approximations, not actual photographs of company inventory. Replace with verified photos as needed."
+}
